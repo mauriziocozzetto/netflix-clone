@@ -2,9 +2,11 @@
 
 Clone di Netflix con backend FastAPI + SQLModel + SQLite e frontend React + Vite + TailwindCSS.
 
+> L’app è pronta sia per l’esecuzione **in locale** (utile per dimostrazioni e sviluppo) sia per il deploy su servizi esterni (Vercel per il frontend e Render per il backend). L’avvio in locale continua a funzionare esattamente come prima.
+
 ---
 
-## Guida all'installazione e avvio
+## Guida all'installazione e avvio in locale
 
 ### Prerequisiti
 - Python 3.10+

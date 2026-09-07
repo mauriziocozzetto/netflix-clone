@@ -5,6 +5,8 @@ Questa guida configura il progetto in modalità **multi-servizio**:
 - **Frontend** (React + Vite) → [Vercel](https://vercel.com)
 - **Backend** (FastAPI + SQLite) → [Render](https://render.com)
 
+> L’esecuzione **in locale** resta completamente supportata e invariata: puoi continuare a mostrare il funzionamento dell’app e il codice ai tuoi studenti senza dipendere dal deploy online. Vedi la sezione [Avvio in locale](#6-avvio-in-locale).
+
 I due servizi girano su domini diversi, quindi è necessario configurare correttamente CORS e i cookie di autenticazione cross-site.
 
 ---

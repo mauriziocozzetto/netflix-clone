@@ -1,5 +1,6 @@
 // In development chiama il backend su localhost:8000.
-// In produzione (stesso dominio) usa path relativi.
+// In produzione usa VITE_API_BASE_URL se definita, altrimenti path relativi
+// (utile quando backend e frontend condividono lo stesso dominio).
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL ??
   (import.meta.env.DEV ? "http://localhost:8000" : "");
