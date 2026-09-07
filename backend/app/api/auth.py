@@ -73,8 +73,8 @@ def login(
         key=COOKIE_NAME,
         value=token,
         httponly=True,
-        samesite="lax",
-        secure=False,
+        samesite=settings.cookie_samesite,
+        secure=settings.cookie_secure,
         max_age=settings.access_token_expire_minutes * 60,
     )
     return {"message": "Login successful"}
@@ -82,7 +82,12 @@ def login(
 
 @router.post("/logout")
 def logout(response: Response) -> Any:
-    response.delete_cookie(key=COOKIE_NAME)
+    response.delete_cookie(
+        key=COOKIE_NAME,
+        samesite=settings.cookie_samesite,
+        secure=settings.cookie_secure,
+        httponly=True,
+    )
     return {"message": "Logout successful"}
 
 

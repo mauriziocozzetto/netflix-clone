@@ -7,6 +7,10 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int = 60 * 24 * 7  # 7 days
     algorithm: str = "HS256"
     tmdb_api_key: str = ""
+    # Cookie settings: in production with frontend/backend on different domains
+    # set COOKIE_SECURE=true and COOKIE_SAMESITE=none.
+    cookie_secure: bool = False
+    cookie_samesite: str = "lax"
 
     class Config:
         env_file = ".env"
