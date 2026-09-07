@@ -9,7 +9,30 @@ Struttura del repository:
 
 ---
 
+## ⚠️ Stato attuale — deploy sospeso
+
+- Il codice è stato preparato e pushato su `github.com/mauriziocozzetto/netflix-clone-web`.
+- Non è stato ancora creato alcun servizio su Render.
+- Il deploy è stato sospeso perché, dalla dashboard di Render, tutte le opzioni di creazione servizio mostrano il badge **PRO**. Sarà necessario verificare il piano del workspace Render o valutare un’alternativa gratuita prima di riprendere.
+- L’esecuzione in locale continua a funzionare normalmente (vedi sezione [Avvio in locale](#avvio-in-locale)).
+
+**Prossimi passi quando si riprenderà:**
+1. Verificare il piano del workspace Render (Billing).
+2. Se il piano permette istanze Free, creare un unico Web Service con i parametri indicati in [Deploy su Render](#4-deploy-su-render).
+3. Se Render risulta a pagamento, valutare piattaforme alternative (es. Fly.io, Railway, Vercel).
+
+---
+
 ## Indice
+
+1. [Prerequisiti](#1-prerequisiti)
+2. [Modifiche già applicate al codice](#2-modifiche-già-applicate-al-codice)
+3. [Preparazione del repository Git](#3-preparazione-del-repository-git)
+4. [Deploy su Render](#4-deploy-su-render)
+5. [Verifica finale](#5-verifica-finale)
+6. [Troubleshooting](#6-troubleshooting)
+7. [Note sui costi e sulla persistenza](#7-note-sui-costi-e-sulla-persistenza)
+8. [Avvio in locale](#8-avvio-in-locale)
 
 1. [Prerequisiti](#1-prerequisiti)
 2. [Modifiche già applicate al codice](#2-modifiche-già-applicate-al-codice)
@@ -151,6 +174,36 @@ https://netflix-clone.onrender.com
 - **Piano gratuito Render:** il Web Service Free funziona senza costi, ma si "addormenta" dopo 15 minuti di inattività e impiega qualche secondo a risvegliarsi.
 - **Filesystem effimero:** le modifiche al database SQLite persistono solo finché il container è attivo. Al prossimo deploy o spin-down, il database torna allo stato del file nel repository (dati iniziali preservati).
 - **Persistenza permanente:** se vuoi mantenere i dati anche dopo i redeploy, devi usare un **Render Disk** (a pagamento) o migrare a **PostgreSQL**.
+
+---
+
+## 8. Avvio in locale
+
+L’app continua a funzionare normalmente in locale. Assicurati che il backend e il frontend siano avviati su due terminali diversi.
+
+### Backend (FastAPI)
+
+```bash
+cd /home/maurizio/Scrivania/netflix-clone/backend
+source ../venv/bin/activate
+uvicorn app.main:app --reload
+```
+
+Il backend sarà disponibile su `http://localhost:8000`.
+
+Il CORS locale è già configurato per accettare il frontend su `http://localhost:5173`.
+
+### Frontend (React + Vite)
+
+```bash
+cd /home/maurizio/Scrivania/netflix-clone/frontend
+npm install   # solo se mancano i moduli
+npm run dev
+```
+
+Il frontend sarà disponibile su `http://localhost:5173`.
+
+In modalità sviluppo `frontend/src/services/api.js` punta automaticamente a `http://localhost:8000`.
 
 ---
 
