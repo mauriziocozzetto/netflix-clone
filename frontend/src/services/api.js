@@ -1,4 +1,8 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+// In development chiama il backend su localhost:8000.
+// In produzione (stesso dominio) usa path relativi.
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ??
+  (import.meta.env.DEV ? "http://localhost:8000" : "");
 
 export async function apiFetch(path, options = {}) {
   const url = `${API_BASE_URL}${path}`;
