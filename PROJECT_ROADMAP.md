@@ -16,7 +16,7 @@
 - **Framework:** FastAPI (Python 3.10+)
 - **Database / ORM:** SQLite gestito tramite SQLModel (Pydantic + SQLAlchemy)
 - **Autenticazione:** OAuth2 / JWT tramite Cookie `HttpOnly`, `SameSite=Lax` (inaccessibili dal JavaScript lato client)
-- **API External Client:** `httpx` integrato per comunicare in modo asincrono con **TMDB (The Movie Database) API**
+- **API External Client:** `httpx` integrato per comunicare in modo asincrono con **TMDB (The Movie Database) API**, è l'equivalente di requests sincrono.
 - **Struttura Pacchetti:**
   - `backend/app/main.py`: Entrypoint dell'applicazione
   - `backend/app/core/`: Configurazione (`config.py`), Sicurezza/JWT (`security.py`), DB (`database.py`)
